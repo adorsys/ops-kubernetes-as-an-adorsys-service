@@ -4,6 +4,11 @@ provider "helm" {
   }
 }
 
+provider "kubermatic" {
+  host       = "https://kaas.cloudpunks.io/"
+  token_path = ".kubermatic"
+}
+
 provider "aws" {
   region  = "eu-central-1"
   profile = ""
@@ -19,7 +24,7 @@ provider "aws" {
 
 provider "kubectl" {
   load_config_file = true
-  config_path = ".kubeconfig"
+  config_path      = ".kubeconfig"
 }
 
 terraform {
@@ -37,8 +42,12 @@ terraform {
       version = "1.14.0"
     }
     random = {
-      source = "hashicorp/random"
+      source  = "hashicorp/random"
       version = "3.4.3"
+    }
+    kubermatic = {
+      source  = "kubermatic/kubermatic"
+      version = "0.2.1"
     }
   }
 }

@@ -25,6 +25,12 @@ module "ingress" {
   source = "../bootstrap/modules/ingress-nginx"
 }
 
+module "kubermatic" {
+  source = "../bootstrap/modules/kubermatic"
+
+  kubermatic_project = "hxbx4nqb87"
+}
+
 # irsa is POCed with #16
 #module "irsa" {
 #  source = "../bootstrap/modules/irsa"
